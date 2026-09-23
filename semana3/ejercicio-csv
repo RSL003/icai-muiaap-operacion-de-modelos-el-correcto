@@ -1,0 +1,12 @@
+#¿que campo identifica la muesatra? el id, que esta puesto como red- y tres numeros identificativos 
+#¿que once campos consume el modelo? ['sample_id', 'fixed_acidity', 'volatile_acidity', 'citric_acid', 'residual_sugar', 'chlorides', 'free_sulfur_dioxide', 'total_sulfur_dioxide', 'density', 'ph', 'sulphates', 'alcohol']
+#Proponed una nueva columna que el contrato deberia rechazar. Rechazarian todas las nuevas porque el contarto no permite más variables
+#Proponed dos valores inválidos y explicad por qué. Ph -3 o densidad -1, porque el pH no puede ser negativo y la densidad tampoco puede ser negativa, ya que ambos representan propiedades físicas que deben ser mayores que cero
+
+import pandas as pd
+
+samples = pd.read_csv("semana3/assets/03-wine-quality/inference_samples.csv")
+
+print(samples.head(5))
+print(samples.shape)
+print(samples.columns.tolist())
