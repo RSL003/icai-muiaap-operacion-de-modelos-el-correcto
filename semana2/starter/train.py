@@ -73,8 +73,8 @@ def train_and_evaluate(path: Path) -> dict[str, object]:
 
 
 def main() -> None:
-    project_root = Path(__file__).resolve().parents[2]
-    metrics = train_and_evaluate(project_root / "data" / "raw" / "WineQT.csv")
+    dataset_path = Path(__file__).resolve().with_name("WineQT.csv")
+    metrics = train_and_evaluate(dataset_path)
 
     print(f"Filas: {metrics['rows']}")
     print(f"Variables: {metrics['features']}")
