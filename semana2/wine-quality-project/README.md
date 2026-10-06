@@ -103,16 +103,32 @@ El test llama directamente a las funciones de entrenamiento y recibe la ruta
 del dataset. Por eso, que Pytest pase no sustituye la comprobación del comando
 modular, que también verifica la ruta utilizada por `main()`.
 
-## Estado pendiente antes de entregar
+## Resultados de verificación
 
-En el archivo guardado al redactar este README, `main()` todavía busca
-`WineQT.csv` junto a `train.py`. Falta completar el paso 05: construir la ruta
-desde la raíz del proyecto hasta `data/raw/WineQT.csv`, tomando como referencia
-la ubicación de `__file__`.
+Verificación realizada el 6 de octubre de 2026 sobre una copia limpia de los
+archivos registrados en Git, con un entorno virtual nuevo y Python 3.13.15 en
+macOS. La instalación y las tres comprobaciones terminaron correctamente.
 
-Después de guardar ese ajuste, ejecuta las comprobaciones anteriores y sustituye
-esta sección por sus resultados reales. Este README no certifica que esas
-ejecuciones hayan terminado correctamente.
+| Comando | Resultado |
+| --- | --- |
+| `uv sync --locked` | Instalación correcta con las versiones de `uv.lock`. |
+| `uv run --frozen python -m wine_quality.train` | 1143 filas, 11 variables, 6 clases y F1 macro de validación de 0.3402. |
+| `uv run --frozen pytest` | 1 test aprobado (`1 passed`). |
+| `uv run --frozen ruff check .` | Sin errores (`All checks passed!`). |
+
+Salida del entrenamiento:
+
+```text
+Filas: 1143
+Variables: 11
+Clases: 6
+F1 macro: 0.3402
+```
+
+La ruta del dataset en `main()` se construye desde la ubicación de `train.py`
+hasta `data/raw/WineQT.csv`. El F1 macro corresponde a la partición de validación
+con semilla `42`; es una evidencia de esta ejecución, no una garantía de
+rendimiento sobre datos nuevos.
 
 ## Entrega en GitHub
 
