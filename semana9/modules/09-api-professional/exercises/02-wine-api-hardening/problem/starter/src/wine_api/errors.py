@@ -65,14 +65,8 @@ def field_path(loc: Sequence[Any]) -> str:
 async def handle_validation_error(
     request: Request, exc: RequestValidationError
 ) -> JSONResponse:
-    # TODO S9.2a: FastAPI responde 422 con {"detail": [...]}, que no es nuestro
-    # contrato. Recorre `exc.errors()`: cada error trae `type`, `loc` y `msg`.
-    # - Si algún `type` es "json_invalid", el cuerpo no es JSON: 400 con
-    #   `ErrorCode.INVALID_JSON` y sin `fields`.
-    # - Si no, 422 con `ErrorCode.VALIDATION_ERROR` y una lista de FieldError
-    #   (usa `field_path`). Nunca copies `input`: puede contener datos del
-    #   usuario. Comprobación: tests/test_s9_2_errors.py
-    raise NotImplementedError("TODO S9.2a")
+    """No se ha validado correctamente"""
+    
 
 
 async def handle_api_error(request: Request, exc: WineApiError) -> JSONResponse:
